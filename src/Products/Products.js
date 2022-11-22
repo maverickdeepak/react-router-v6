@@ -1,7 +1,12 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import ProductsIndex from "./ProductsIndex";
-import { Product } from "./Product";
+
+// import ProductsIndex from "./ProductsIndex";
+// import { Product } from "./Product";
+import SuspenseFile from "../Common/SuspenseFile";
+
+const Product = SuspenseFile(lazy(() => import("./Product")));
+const ProductsIndex = SuspenseFile(lazy(() => import("./ProductsIndex")));
 
 import { css } from "@emotion/css";
 

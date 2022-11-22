@@ -1,9 +1,15 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import { css } from "@emotion/css";
 
-import ProductsIndex from "../Products/ProductsIndex";
-import ProductEdit from "../Products/ProductEdit";
+// import ProductsIndex from "../Products/ProductsIndex";
+// import ProductEdit from "../Products/ProductEdit";
+import SuspenseFile from "../Common/SuspenseFile";
+
+const ProductsIndex = SuspenseFile(
+  lazy(() => import("../Products/ProductsIndex"))
+);
+const ProductEdit = SuspenseFile(lazy(() => import("../Products/ProductEdit")));
 
 const AdminStyle = css`
   .Admin {

@@ -43,7 +43,7 @@ const ProductStyle = css`
   }
 `;
 
-export const Product = () => {
+const Product = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
@@ -88,3 +88,5 @@ export const Product = () => {
     </div>
   );
 };
+
+export default Product;

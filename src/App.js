@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { lazy, useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -7,11 +7,17 @@ import {
 } from "react-router-dom";
 import { css } from "@emotion/css";
 
+import SuspenseFile from "./Common/SuspenseFile";
+
 import Nav from "./Common/Nav";
 import ProtectedRoute from "./Common/ProtectedRoute";
+import ScrollToTop from "./Common/ScrollToTop";
 
-import Products from "./Products/Products";
-import Admin from "./Admin/Admin";
+// import Products from "./Products/Products";
+// import Admin from "./Admin/Admin";
+
+const Products = SuspenseFile(lazy(() => import("./Products/Products")));
+const Admin = SuspenseFile(lazy(() => import("./Admin/Admin")));
 
 const AppStyle = css`
   margin: 50px auto;
@@ -29,6 +35,7 @@ const App = () => {
   return (
     <div className={AppStyle}>
       <Router>
+        <ScrollToTop />
         <div className="Container">
           <Nav />
           <Routes>
